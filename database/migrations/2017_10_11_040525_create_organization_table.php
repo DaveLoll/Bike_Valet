@@ -29,6 +29,7 @@ class CreateOrganizationTable extends Migration
             $table->string('Org_Address_2')->nullable();
             $table->string('Org_City');
             $table->string('Org_State');
+            $table->string('Org_Zip');
             $table->string('Org_Website')->nullable();
             $table->string('Org_Phone_Number');
             $table->string('Org_Email')->nullable();
