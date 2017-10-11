@@ -14,7 +14,12 @@ class CreateValetEventTable extends Migration
     public function up()
     {
         Schema::create('Valet_Event', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('Valet_Event_ID');
+            $table->integer('User_ID')->unsigned();
+            $table->integer('Event_ID')->unsigned();
+
+            $table->foreign('User_ID')->references('User_ID')->on('users');
+            $table->foreign('Event_ID')->references('Event_ID')->on('Event');
             $table->timestamps();
         });
     }

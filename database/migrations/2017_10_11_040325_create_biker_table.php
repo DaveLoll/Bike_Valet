@@ -21,7 +21,7 @@ class CreateBikerTable extends Migration
     public function up()
     {
         Schema::create('Biker', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('Biker_ID');
             $table->string('Biker_Email')->nullable();
             $table->string('Biker_Zip')->nullable();
             $table->string('Biker_First_Name');

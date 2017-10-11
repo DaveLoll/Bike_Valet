@@ -14,8 +14,21 @@ class CreateEventTable extends Migration
     public function up()
     {
         Schema::create('Event', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('Event_ID');
+            $table->string('Event_Name');
+            $table->integer('Org_ID')->unsigned();
+            $table->date('Event_Date');
+            $table->time('Event_Start_Time')->nullable();
+            $table->time('Event_Stop_Time')->nullable();
+            $table->string('Event_Address');
+            $table->string('Event_Address_2')->nullable();
+            $table->string('Event_City');
+            $table->string('Event_State');
+            $table->string('Event_Zip');
+            $table->enum('Event_Status', ['Planned', 'Started', 'Stopped', 'Cancelled']);
             $table->timestamps();
+
+            $table->foreign('Org_ID')->references('Org_ID')->on('Organization');
         });
     }
 
