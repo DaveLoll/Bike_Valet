@@ -20,8 +20,6 @@ class OrganizationTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $limit = 30;
-
         DB::table('Organization')->insert([
             'Org_Name' => 'College World Series',
             'Org_Contact_First_Name' => $faker->firstName,

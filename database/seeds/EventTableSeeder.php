@@ -19,11 +19,13 @@ class EventTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        $startTime = $faker->time($format = 'H:i:s', $max = 'now');
+
+        //Using these variables so both events below are at the same geographic location
         $address = $faker->streetAddress;
         $city = $faker->city;
         $state = $faker->state;
         $zip = $faker->postcode;
+
         DB::table('Event')->insert([
             'Event_Name' => 'College World Series 1st inning',
             'Org_ID' => 1,

@@ -21,8 +21,10 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
+        //Used to change the amount of users you want to seed
         $limit = 30;
 
+        //This insert is to guarantee that you have an admin user in the database
         DB::table('users')->insert([
             'User_First_Name' => 'Admin',
             'User_Last_Name' => 'User',
