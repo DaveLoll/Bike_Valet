@@ -1,5 +1,12 @@
 <?php
-
+/*
+     Filename:     2014_10_12_000000_create_users_table
+     Creator:      Kyle Fisher
+     Create Date:  20171010
+     Purpose:      The migration for the users table
+     Log:
+                   20171010:     Initial file creation.//KF
+*/
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

@@ -1,5 +1,12 @@
 <?php
-
+/*
+     Filename:     2017_10_11_040906_create_parked_bike_table.php
+     Creator:      Kyle Fisher
+     Create Date:  20171010
+     Purpose:      The migration for the parked bike table
+     Log:
+                   20171010:     Initial file creation.//KF
+*/
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

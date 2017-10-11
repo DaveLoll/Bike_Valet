@@ -6,7 +6,7 @@
      Purpose:      The migration for the biker table
      Log:
                    20171010:     Initial file creation.//KF
-  */
+*/
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

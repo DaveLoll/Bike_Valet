@@ -1,5 +1,12 @@
 <?php
-
+/*
+     Filename:     2017_10_11_040648_create_event_table.php
+     Creator:      Kyle Fisher
+     Create Date:  20171010
+     Purpose:      The migration for the event table
+     Log:
+                   20171010:     Initial file creation.//KF
+*/
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
