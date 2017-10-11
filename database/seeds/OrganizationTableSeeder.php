@@ -40,7 +40,7 @@ class OrganizationTableSeeder extends Seeder
             'Org_Address' => $faker->streetAddress,
             'Org_City' => $faker->city,
             'Org_State' => $faker->state,
-            'Org_ZIP' => $faker->postcode,
+            'Org_Zip' => $faker->postcode,
             'Org_Phone_Number' => $faker->unique()->e164PhoneNumber,
         ]);
     }
