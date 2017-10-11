@@ -1,5 +1,12 @@
 <?php
-
+/*
+     Filename:     UsersTableSeeder.php
+     Creator:      Kyle Fisher
+     Create Date:  20171010
+     Purpose:      The seeder for the users table
+     Log:
+                   20171010:     Initial file creation.//KF
+*/
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

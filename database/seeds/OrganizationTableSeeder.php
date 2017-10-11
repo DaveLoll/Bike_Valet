@@ -1,5 +1,12 @@
 <?php
-
+/*
+     Filename:     OrganizationTableSeeder.php
+     Creator:      Kyle Fisher
+     Create Date:  20171010
+     Purpose:      The seeder for the organization table
+     Log:
+                   20171010:     Initial file creation.//KF
+*/
 use Illuminate\Database\Seeder;
 
 class OrganizationTableSeeder extends Seeder
