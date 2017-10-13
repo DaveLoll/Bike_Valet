@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->increments('User_ID');
             $table->string('User_First_Name');
             $table->string('User_Last_Name');
-            $table->string('User_Email');
+            $table->string('User_Email')->unique();
             $table->string('User_Phone_Number')->unique();
             $table->string('password');
             $table->enum('User_Role', ['Valet', 'Lead Valet', 'Admin']);
