@@ -20,11 +20,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('User', function (Blueprint $table) {
             $table->increments('User_ID');
             $table->string('User_First_Name');
             $table->string('User_Last_Name');
-            $table->string('User_Email')->unique();
+            $table->string('email')->unique();
             $table->string('User_Phone_Number')->unique();
             $table->string('password');
             $table->enum('User_Role', ['Valet', 'Lead Valet', 'Admin']);

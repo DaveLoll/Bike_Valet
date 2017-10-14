@@ -25,7 +25,7 @@ class CreateValetEventTable extends Migration
             $table->integer('User_ID')->unsigned();
             $table->integer('Event_ID')->unsigned();
 
-            $table->foreign('User_ID')->references('User_ID')->on('users');
+            $table->foreign('User_ID')->references('User_ID')->on('User');
             $table->foreign('Event_ID')->references('Event_ID')->on('Event');
             $table->timestamps();
         });
