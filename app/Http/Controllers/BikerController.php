@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Biker;
+use App\ParkedBike;
+use App\Event;
 use Illuminate\Http\Request;
 
 class BikerController extends Controller
@@ -81,5 +83,12 @@ class BikerController extends Controller
     public function destroy(Biker $biker)
     {
         //
+    }
+
+    public function createBikerAndCheckin(Request $request)
+    {
+        $biker = new Biker();
+        $biker->
+        $parkedBike = new ParkedBike();
     }
 }

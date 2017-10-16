@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ParkedBike;
+use App\Biker;
 use Illuminate\Http\Request;
 
 class ParkedBikeController extends Controller
@@ -35,7 +36,19 @@ class ParkedBikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $biker = Biker::where('Biker_Phone_Number',$request->PhoneNumber) -> first();
+//        echo $request->PhoneNumber;
+//        echo "<br/>";
+//        echo $biker->Biker_ID;
+        $parkedBike = new ParkedBike();
+        $parkedBike->Event_ID = 2;
+        $parkedBike->Ticket = rand(1,100);
+        $parkedBike->Tag_Number = $request->tag;
+        $parkedBike->comment = null;
+        $parkedBike->Biker_ID = $biker->Biker_ID;
+        $parkedBike->Status = 'Checked In';
+        $parkedBike->save();
+        return redirect('/checkin');
     }
 
     /**
