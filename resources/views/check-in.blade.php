@@ -1,3 +1,11 @@
+{{--/*--}}
+{{--Filename:     check-in.blade.php--}}
+{{--Creator:      Kyle Fisher--}}
+{{--Create Date:  20171016--}}
+{{--Purpose:      A testing page for checking in bikers.--}}
+{{--Log:--}}
+{{--20171016:     Initial file creation.//KF--}}
+{{--*/--}}
 <html>
 <head>
     <title>@yield('title')</title>
@@ -8,32 +16,6 @@
     <link rel="stylesheet" href = {{asset('/css/style.css')}}>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#getBiker").click(function() {   //button id
-                var Form = $("#searchForm");  //form id
-                loginForm.submit(function(e){
-                    e.preventDefault();
-                    var formData = Form.serialize();
-                    /*alert(formData);*/
-                    $.ajax({
-                        url:"Biker",
-                        type:'get',
-                        data:formData,
-                        success:function(data){
-                            alert(data);
-
-                        },
-                        error: function (data) {
-                            /*console.log(data);*/
-                            alert(data);
-                        }
-                    });
-                });
-                /*alert('Successfully Loaded');*/
-            });
-        });
-    </script>
 </head>
 <body>
 <div data-role="page" id="login">
@@ -245,17 +227,11 @@
 </div>
 <div data-role="page" id="checkIn">
     <div data-role="header">
-        <form id="searchForm">
-            <h2>Login</h2>
-            <label for="tag">TAG:</label>
-            <input type="text" name="tag" id="tag" value="" />
-            <input type="text" name="phoneSearch" id="phoneSearch" value="" />
-            <p><a href="#newBiker">New Biker</a></p>
-            <p><a href="#existingBiker">Existing Biker</a></p>
-        </form>
+            <h2>Check In</h2>
     </div>
     <div role="main" class="ui-content">
-
+        <p><a href="#newBiker">New Biker</a></p>
+        <p><a href="#existingBiker">Existing Biker</a></p>
     </div>
     <div data-role="footer"></div>
 </div>

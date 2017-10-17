@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ParkedBike;
 use App\Biker;
 use Illuminate\Http\Request;
+use App\Notifications\SendTicket;
 
 class ParkedBikeController extends Controller
 {
@@ -48,6 +49,8 @@ class ParkedBikeController extends Controller
         $parkedBike->Biker_ID = $biker->Biker_ID;
         $parkedBike->Status = 'Checked In';
         $parkedBike->save();
+
+        $biker->notify(new SendTicket('Your ticket is:' . $parkedBike->Ticket));
         return redirect('/checkin');
     }
 
