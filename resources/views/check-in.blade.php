@@ -272,6 +272,8 @@
         <input type="number" name="Zipcode" id="zipcode" value=""  />
         <label for="email">Email (optional)</label>
         <input type="email" name="email" id="email" value=""  />
+        <label for="tag">TAG:</label>
+        <input type="text" name="tag" id="tag" value="" />
         <button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>
     </form>
 </div>
