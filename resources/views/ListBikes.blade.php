@@ -1,27 +1,32 @@
-<html>
-<head>
-    <title>@yield('title')</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="Omaha Bike Valet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
-    <link rel="stylesheet" href = {{asset('/css/style.css')}}>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-</head>
-<body>
-<div data-role="page">
-    <div data-role="header">
+@extends('layouts.master')
+@section('title','Check Out')
+@stop
 
-    </div><!-- /header -->
+@section('header')
+    <a href="" data-icon="arrow-l"></a>
+    <h1>View Check In</h1>
+@stop
 
-    <div role="main" class="ui-content">
-        
+@section('main')
+    @if(count($ParkedBike) > 0)
+        {!! Form::open(['action' => ['ParkedBikeController.Read]]) !!}
+        {{
+        $count = 0;
+        foreach (var $bike in $ParkedBike)
+        {
+            echo Form::radio('name', $bike);
+            $count++;
+        }
+        }}
+        {!! Form::close() !!}
+    @endif
+    <div data-role="panel" id="menu" data-position="left" data-display="overlay">
+        <h1> {{echo  $ParkedBike[$count].name}}</h1>
+        <h3>{{echo  $ParkedBike[$count].PhoneNumber}}</h3>
+        <h5>{{echo  $ParkedBike[$count].email}}</h5>
+        <h3>{{echo  $ParkedBike[$count].tagNumber}}</h3>
     </div>
+@stop
 
-    <div data-role="footer">
-
-    </div>
-</div>
-</body>
-</html>
+@section('footer')
+@stop

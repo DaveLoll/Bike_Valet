@@ -14,9 +14,13 @@ class ParkedBikeController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
+   /** public function getBikesCheckOut()
+    {
+        $checkedoutBikes = table('Parked_Bike')->where('status', 'checkedIn')->pluck('ticketNum', 'Name');
+    }
     /**
      * Show the form for creating a new resource.
      *
