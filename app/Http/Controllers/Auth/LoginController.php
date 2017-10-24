@@ -5,6 +5,19 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+/*
+   Filename:     LoginController.php
+   Creator:      Laravel
+   Create Date:  20171017
+   Purpose:      Controls Laravel's Login Process.
+   Log:
+                 20171019:    Added logic to send user to reset password if userStatus is Preregistered.//AC
+*/
+
+
+
+
+
 class LoginController extends Controller
 {
     /*
@@ -25,7 +38,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+   /* $userStatus = 'preRegistered';*/
+
+    protected $redirectTo = 'home';
+
+
+   /* $userStatus = 'Registered';
+    protected $redirectTo = '/volunteerWelcome';
 
     /**
      * Create a new controller instance.
