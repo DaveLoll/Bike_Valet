@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<div data-role="page" id="volunteerHours">
+<div data-role="page" id="volunteerWelcome">
     <div data-role="header">
 
     </div><!-- /header -->
