@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
    Create Date:  20171017
    Purpose:      Controls Laravel's Login Process.
    Log:
-                 20171019:    Added logic to send user to reset password if userStatus is Preregistered.//AC
+                 20171019:   Commented out penging review/update-Added logic to send user to reset password if userStatus is Preregistered.//AC
 */
 
 
