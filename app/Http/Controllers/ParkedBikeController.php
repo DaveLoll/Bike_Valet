@@ -88,6 +88,7 @@ class ParkedBikeController extends Controller
     {
         $ParkedBikeInformation = ParkedBike::where('Parked_Biked_ID', $ParkedBikeIDString) -> first();
         $BikerInformation = Biker::where('Biker_ID', $ParkedBikeInformation->Biker_ID);
+         return redirect('/CheckOut');
 
     }
 
