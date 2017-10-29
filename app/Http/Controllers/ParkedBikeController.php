@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Biker;
 use App\ParkedBike;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,7 @@ class ParkedBikeController extends Controller
 
     }
 
-   /** public function getBikesCheckOut()
-    {
-        $checkedoutBikes = table('Parked_Bike')->where('status', 'checkedIn')->pluck('ticketNum', 'Name');
-    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -71,9 +69,26 @@ class ParkedBikeController extends Controller
      * @param  \App\ParkedBike  $parkedBike
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ParkedBike $parkedBike)
+    public function update(Request $request)
     {
-        //
+
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $ParkedBike = new ParkedBike();
+        $ParkedBike->Parked_Bike_ID = $request->Parked_Bike_ID;
+        $ParkedBike->Status = 'Checked Out';
+        $ParkedBike -> save();
+
+        return redirect('/splash');
+    }
+
+    public function  getCheckOutInformation($ParkedBikeIDString)
+    {
+        $ParkedBikeInformation = ParkedBike::where('Parked_Biked_ID', $ParkedBikeIDString) -> first();
+        $BikerInformation = Biker::where('Biker_ID', $ParkedBikeInformation->Biker_ID);
+
     }
 
     /**

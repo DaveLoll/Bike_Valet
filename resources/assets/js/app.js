@@ -20,3 +20,10 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+/**
+ * Backup if onchange doesn't work
+ * $('BikerList').on('select', function() {
+    $(this).closest("form").submit();
+});
+*/

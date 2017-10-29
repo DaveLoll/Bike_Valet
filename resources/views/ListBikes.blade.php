@@ -1,31 +1,32 @@
+<?php
+/*
+   Filename:     ListBikes.blade.php
+   Creator:      Wilson Holland
+   Create Date:  20171024
+   Purpose:      List in use Bikes.
+   Log:
+                 20171024:     Initial file creation.//WH
+*/
+?>
+
 @extends('layouts.master')
 @section('title','Check Out')
 @stop
 
 @section('header')
-    <a href="" data-icon="arrow-l"></a>
-    <h1>View Check In</h1>
+    <a href="#" data-icon="arrow-l"></a>
+    <h1>Bikes Checked In</h1>
 @stop
 
 @section('main')
-    @if(count($ParkedBike) > 0)
-        {!! Form::open(['action' => ['ParkedBikeController.Read]]) !!}
-        {{
-        $count = 0;
-        foreach (var $bike in $ParkedBike)
-        {
-            echo Form::radio('name', $bike);
-            $count++;
-        }
-        }}
-        {!! Form::close() !!}
+    {{$Biker= App\Biker::with('Biker_First_Name', 'Biker_Last_Name')->get(); }}
+    @if(count($Biker) > 0)
+        <form action="/GetCheckoutInformation" method="Post" data-ajax="false">
+          @foreach($Biker as $Bike)
+                <input type="radio" name="BikerList" value="unchecked" onchange="this.form.submit();">{{echo $Biker->Bike->Biker_First_Name + $Biker->Bike->Biker_Last_Name;}}<br>
+          @endfor
+        </form>
     @endif
-    <div data-role="panel" id="menu" data-position="left" data-display="overlay">
-        <h1> {{echo  $ParkedBike[$count].name}}</h1>
-        <h3>{{echo  $ParkedBike[$count].PhoneNumber}}</h3>
-        <h5>{{echo  $ParkedBike[$count].email}}</h5>
-        <h3>{{echo  $ParkedBike[$count].tagNumber}}</h3>
-    </div>
 @stop
 
 @section('footer')

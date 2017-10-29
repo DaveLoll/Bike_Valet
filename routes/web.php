@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::Resource('/home', 'HomeController@index')->name('home');
+
+Route::Resource('ParkedBike', 'ParkedBikeController');
+Route::Resource('Event','EventController');
+Route::Resource('Biker', 'BikerController');
+Route::Resource('User', 'UserController');
+Route::Resource('Organization', 'Organization');
+Route::Resource('ValetEvent', 'ValetEventController');
+Route::Get('/GetCheckoutInformation', 'ParkedBikeController@GetCheckoutInformation' );

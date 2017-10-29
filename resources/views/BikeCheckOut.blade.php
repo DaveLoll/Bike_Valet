@@ -1,3 +1,15 @@
+<?php
+/*
+   Filename:     BikeCheckOut.Blade.php
+   Creator:      Wilson Holland
+   Create Date:  20171020
+   Purpose:      Check Out Bike Page.
+   Log:
+                 20171010:     Initial file creation.//WH
+                 20171027:     Updates to page
+*/
+?>
+
 @extends('layouts.master')
 @section('title','Check Out')
     @stop
@@ -8,16 +20,10 @@
 @stop
 
 @section('main')
-    @if(count($ParkedBike) > 0)
-    {!! Form::open(['action' => ['ParkedBikeController.update']]) !!}
-    {{
-    foreach (var $bike in $ParkedBike)
-    {
-        echo Form::radio('name', $bike);
-    }
-    }}
-    {!! Form::submit('Check Out') !!}
-    {!! Form::close() !!}
+    <form action="/BikeCheckout" method="POST" data-ajax="false">
+        {{ csrf_field() }}
+        <button type="submit" data-ajax="false" class="btn btn-primary">Check Out</button>
+    </form>
 
 @stop
 
