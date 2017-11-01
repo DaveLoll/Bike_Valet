@@ -47,9 +47,10 @@ class BikerController extends Controller
      * @param  \App\Biker  $biker
      * @return \Illuminate\Http\Response
      */
-    public function show(Biker $biker)
+    public function show(Request $request)
     {
-        //
+        $biker = DB::select('select * from Biker where Phone_Number = ?', [$request->input('phone')]);
+        return $biker->toJson();
     }
 
     /**

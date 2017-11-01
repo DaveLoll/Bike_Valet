@@ -25,3 +25,4 @@ Route::resource('Biker', 'BikerController');
 Route::post('/bikerEvent', 'BikerController@createBikerAndCheckin');
 Route::resource('Event', 'EventController');
 Route::resource('ParkedBike', 'ParkedBikeController');
+Route::post('/bikerInfo', 'BikerController@show');
