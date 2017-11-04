@@ -34,7 +34,7 @@
         <form action="" method="Get" data-ajax="false">
             {{csrf_field()}}
           @foreach($Biker as $Bike)
-                <input type="radio" name="BikerList" value="unchecked" onchange=>{{$Biker->Bike->Biker_First_Name}} + " " + {{$Biker->Bike->Biker_Last_Name;}}<br>
+                <input type="radio" name="BikerList" value="unchecked"> {{$Biker->Bike->Biker_First_Name}} + " " + {{$Biker->Bike->Biker_Last_Name;}}<br>
           <div data-role="panel" data-display="overlay" id="checkout">
              <div data-role="Header">
                  <a data-rel="back" data-icon="arrow-l"></a>
