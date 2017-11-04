@@ -10,6 +10,7 @@
 <head>
     <title>@yield('title')</title>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Omaha Bike Valet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
@@ -19,16 +20,31 @@
     <script type="text/javascript">
         $(document).ready(function() {
             console.log('javascript sucks');
-            $(document).on('click touchstart', '#singleFormButton', function() {
+            $(document).on('click', '#singleFormButton', function() {
                 console.log('happening');
                 $.ajax({
+                    type: 'POST',
                     url: '/bikerInfo',
-                    method: 'post',
-                    data: $('#phoneNumber2'),
-                    success: function(data){
-                        alert(data);
+//                    processData: false,
+//                    contentType: false,
+//                    dataType: 'json',
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    data: {number:$('#phoneNumber2').val()},
+
+                    success: function (data) {
+                        var biker = JSON.parse(data);
+                        console.log(biker);
+                        $('#firstName').val(biker[0].Biker_First_Name);
+                        $('#lastName').val(biker[0].Biker_Last_Name);
+                        $('#phoneNumber').val(biker[0].Biker_Phone_Number);
+                        $('#zipcode').val(biker[0].Biker_Zip);
+                        $('#email').val(biker[0].Biker_Email);
+                        $('#tag').val($('#tag2').val());
+
                     },
-                    error: function(){},
+                    error: function (data) {
+
+                    }
                 });
                 return true;
             });
@@ -248,46 +264,49 @@
             <h2>Check In</h2>
     </div>
     <label for="tag">TAG:</label>
-    <input type="text" name="tag" id="tag" value="" />
-    <label id="phoneNumberValue" for="phoneNumber">Phone Number</label>
-    <input type="tel" name="PhoneNumber" id="phoneNumber2" value=""  />
+    <form action="/bikerInfo" method="POST">
+        <input type="text" name="tag" id="tag2" value="" />
+        <label id="phoneNumberValue" for="PhoneNumber">Phone Number</label>
+        <input type="tel" name="PhoneNumber" id="phoneNumber2" value=""  />
+        {{--<button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>--}}
+    </form>
     <div role="main" class="ui-content">
-        <p><a href="#newBiker">New Biker</a></p>
-        <p><a href="#existingBiker">Existing Biker</a></p>
-        <p><a href="#singleBiker" id="singleFormButton">Single Form Biker</a></p>
+        {{--<p><a href="#newBiker">New Biker</a></p>--}}
+        {{--<p><a href="#existingBiker">Existing Biker</a></p>--}}
+        <p><a href="#singleBiker" id="singleFormButton">Checkin</a></p>
     </div>
     <div data-role="footer"></div>
 </div>
-<div data-role="page" id="newBiker">
-    <form id="NewBikerInfo" action="/bikerEvent" method="POST" data-ajax="false">
-        {{ csrf_field() }}
-        <label for="firstName">First Name</label>
-        <input type="text" name="FirstName" id="firstName" value=""  />
-        <label for="lastName">Last Name</label>
-        <input type="text" name="LastName" id="lastName" value=""  />
-        <label id="phoneNumberValue" for="phoneNumber">Phone Number</label>
-        <input type="tel" name="PhoneNumber" id="phoneNumber" value=""  />
-        <label for="zipcode">Zipcode</label>
-        <input type="number" name="Zipcode" id="zipcode" value=""  />
-        <label for="email">Email (optional)</label>
-        <input type="email" name="email" id="email" value=""  />
-        <label for="tag">TAG:</label>
-        <input type="text" name="tag" id="tag" value="" />
-        <button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>
-    </form>
-</div>
-<div data-role="page" id="existingBiker">
-    <form id="ExistingBikerInfo" action="/ParkedBike" method="POST" data-ajax="false">
-        {{ csrf_field() }}
-        <label id="phoneNumberValue" for="phoneNumber">Phone Number</label>
-        <input type="tel" name="PhoneNumber" id="phoneNumber" value=""  />
-        <label for="email">Email (optional)</label>
-        <input type="email" name="email" id="email" value=""  />
-        <label for="tag">TAG:</label>
-        <input type="text" name="tag" id="tag" value="" />
-        <button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>
-    </form>
-</div>
+{{--<div data-role="page" id="newBiker">--}}
+    {{--<form id="NewBikerInfo" action="/bikerEvent" method="POST" data-ajax="false">--}}
+        {{--{{ csrf_field() }}--}}
+        {{--<label for="firstName">First Name</label>--}}
+        {{--<input type="text" name="FirstName" id="firstName" value=""  />--}}
+        {{--<label for="lastName">Last Name</label>--}}
+        {{--<input type="text" name="LastName" id="lastName" value=""  />--}}
+        {{--<label id="phoneNumberValue" for="phoneNumber">Phone Number</label>--}}
+        {{--<input type="tel" name="PhoneNumber" id="phoneNumber" value=""  />--}}
+        {{--<label for="zipcode">Zipcode</label>--}}
+        {{--<input type="number" name="Zipcode" id="zipcode" value=""  />--}}
+        {{--<label for="email">Email (optional)</label>--}}
+        {{--<input type="email" name="email" id="email" value=""  />--}}
+        {{--<label for="tag">TAG:</label>--}}
+        {{--<input type="text" name="tag" id="tag" value="" />--}}
+        {{--<button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>--}}
+    {{--</form>--}}
+{{--</div>--}}
+{{--<div data-role="page" id="existingBiker">--}}
+    {{--<form id="ExistingBikerInfo" action="/ParkedBike" method="POST" data-ajax="false">--}}
+        {{--{{ csrf_field() }}--}}
+        {{--<label id="phoneNumberValue" for="phoneNumber">Phone Number</label>--}}
+        {{--<input type="tel" name="PhoneNumber" id="phoneNumber" value=""  />--}}
+        {{--<label for="email">Email (optional)</label>--}}
+        {{--<input type="email" name="email" id="email" value=""  />--}}
+        {{--<label for="tag">TAG:</label>--}}
+        {{--<input type="text" name="tag" id="tag" value="" />--}}
+        {{--<button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>--}}
+    {{--</form>--}}
+{{--</div>--}}
 <div data-role="page" id="singleBiker">
     <form id="SingleBikerInfo" action="/bikerEvent" method="POST" data-ajax="false">
         {{ csrf_field() }}
@@ -298,7 +317,7 @@
         <label id="phoneNumberValue" for="phoneNumber">Phone Number</label>
         <input type="tel" name="PhoneNumber" id="phoneNumber" value=""  />
         <label for="zipcode">Zipcode</label>
-        <input type="number" name="Zipcode" id="zipcode" value=""  />
+        <input type="text" name="Zipcode" id="zipcode" value=""  />
         <label for="email">Email (optional)</label>
         <input type="email" name="email" id="email" value=""  />
         <label for="tag">TAG:</label>
