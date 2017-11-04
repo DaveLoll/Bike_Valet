@@ -13,6 +13,7 @@
 @section('title','List Bikes')
 @stop
 
+
 @section('id', 'ListBike')
     @stop
 @section('header')
@@ -21,11 +22,19 @@
 @stop
 
 @section('main')
+    <script>
+        $(document).ready(function() {
+            $("input[name$='BikerList']").click(function() {
+                var Biker = $(this).val();
+                $("#Checkout").show();
+            });
+        });
+    </script>
     @if(count($Biker) > 0)
         <form action="" method="Get" data-ajax="false">
             {{csrf_field()}}
           @foreach($Biker as $Bike)
-                <input type="radio" name="BikerList" value="unchecked" onchange="">{{$Biker->Bike->Biker_First_Name}} + " " + {{$Biker->Bike->Biker_Last_Name;}}<br>
+                <input type="radio" name="BikerList" value="unchecked" onchange=>{{$Biker->Bike->Biker_First_Name}} + " " + {{$Biker->Bike->Biker_Last_Name;}}<br>
           <div data-role="panel" data-display="overlay" id="checkout">
              <div data-role="Header">
                  <a data-rel="back" data-icon="arrow-l"></a>
