@@ -57,10 +57,22 @@
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
-        <form>
-            <a href="#checkIn" class="a ui-btn ui-corner-all">CHECK IN</a>
+        <div data-role="header">
+            <h2>Check In</h2>
+        </div>
+        <label for="tag">TAG:</label>
+        <form action="/bikerInfo" method="POST">
+            <input type="text" name="tag" id="tag2" value="" />
+            <label id="phoneNumberValue" for="PhoneNumber">Phone Number</label>
+            <input type="tel" name="PhoneNumber" id="phoneNumber2" value=""  />
+            {{--<button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>--}}
         </form>
-
+        <div role="main" class="ui-content">
+            {{--<p><a href="#newBiker">New Biker</a></p>--}}
+            {{--<p><a href="#existingBiker">Existing Biker</a></p>--}}
+            <p><a href="#singleBiker" id="singleFormButton">Checkin</a></p>
+        </div>
+        <div data-role="footer"></div>
     </div><!-- /content -->
 
     <div data-role="footer">
@@ -259,24 +271,24 @@
     </div>
     <div data-role="footer"></div>
 </div>
-<div data-role="page" id="checkIn">
-    <div data-role="header">
-            <h2>Check In</h2>
-    </div>
-    <label for="tag">TAG:</label>
-    <form action="/bikerInfo" method="POST">
-        <input type="text" name="tag" id="tag2" value="" />
-        <label id="phoneNumberValue" for="PhoneNumber">Phone Number</label>
-        <input type="tel" name="PhoneNumber" id="phoneNumber2" value=""  />
+{{--<div data-role="page" id="checkIn">--}}
+    {{--<div data-role="header">--}}
+            {{--<h2>Check In</h2>--}}
+    {{--</div>--}}
+    {{--<label for="tag">TAG:</label>--}}
+    {{--<form action="/bikerInfo" method="POST">--}}
+        {{--<input type="text" name="tag" id="tag2" value="" />--}}
+        {{--<label id="phoneNumberValue" for="PhoneNumber">Phone Number</label>--}}
+        {{--<input type="tel" name="PhoneNumber" id="phoneNumber2" value=""  />--}}
         {{--<button type="submit" data-ajax="false" class="btn btn-primary">Check In</button>--}}
-    </form>
-    <div role="main" class="ui-content">
+    {{--</form>--}}
+    {{--<div role="main" class="ui-content">--}}
         {{--<p><a href="#newBiker">New Biker</a></p>--}}
         {{--<p><a href="#existingBiker">Existing Biker</a></p>--}}
-        <p><a href="#singleBiker" id="singleFormButton">Checkin</a></p>
-    </div>
-    <div data-role="footer"></div>
-</div>
+        {{--<p><a href="#singleBiker" id="singleFormButton">Checkin</a></p>--}}
+    {{--</div>--}}
+    {{--<div data-role="footer"></div>--}}
+{{--</div>--}}
 {{--<div data-role="page" id="newBiker">--}}
     {{--<form id="NewBikerInfo" action="/bikerEvent" method="POST" data-ajax="false">--}}
         {{--{{ csrf_field() }}--}}
