@@ -23,13 +23,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $password = random_bytes(3);
-        var_dump(bin2hex($password);
-
-        view()->share('password', $password );
 
 
-        //
+       /* $bytes = openssl_random_pseudo_bytes(4);
+
+        $password = bin2hex($bytes);
+
+        view()->share('password', $password); */
+
+    }
+
+
+
+
+
+
+
+    //
 
 
     /**
@@ -41,4 +51,5 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
 }

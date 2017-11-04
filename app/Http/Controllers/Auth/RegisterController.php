@@ -65,12 +65,11 @@ class RegisterController extends Controller
             'userFirstName' => 'required|string|max:255',
             'userLastName' => 'required|string|max:255',
             'userPhoneNumber' => 'required|string',
-            'email' => 'required|string|email|max:255|unique:users',
-            'userRole' => 'required|in:lead,standard,admin',
+            'email' => 'required|string|email|max:255|unique:User',
+            'userRole' => 'required|in:Lead Valet,Valet,Admin',
             'password' => 'required|string|min:6|confirmed',
-            'userStatus' => 'required|in:preregistered,registered,terminated',
+           /* 'userStatus' => 'required|in:PreRegistered,Registered,Terminated',*/
         ]);
-
     }
 
     /**
@@ -82,13 +81,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'userFirstName' => $data['userFirstName'],
-            'userLastName' => $data['userLastName'],
-            'userPhoneNumber' => $data['userPhoneNumber'],
+            'User_First_Name' => $data['userFirstName'],
+            'User_Last_Name' => $data['userLastName'],
+            'User_Phone_Number' => $data['userPhoneNumber'],
             'email' => $data['email'],
-            'userRole' => $data['userRole'],
+            'User_Role' => $data['userRole'],
             'password' => bcrypt($data['password']),
-            'userStatus' => $data('userStatus'),
+            'User_Status' => 'Pre Registered',
         ]);
 
 
@@ -96,7 +95,7 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        \Mail::to($user)->send(new ChangePassword($user));
+     /*   \Mail::to($user)->send(new ChangePassword($user));*/
 
     }
 }

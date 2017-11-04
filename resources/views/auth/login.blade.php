@@ -38,6 +38,11 @@ Log:
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">-->
     <div role="main" class="ui-content">
+        @if(count($errors)>0)
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        @endif
         <form method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
             <h2>Login</h2>
@@ -63,7 +68,10 @@ Log:
             </div>
             <p><a href="{{url('/register')}}">NEED TO REGISTER?</a></p>
 
-            <a href="{{url('/volunteerWelcome')}}" class="ui-btn ui-corner-all">LOGIN</a>
+            <div class="ui-input-btn ui-btn ui-corner-all">
+                Login
+                <input type="submit" name="submit" id="submit" value="Login">
+            </div>
         </form>
 
     </div><!-- /content -->

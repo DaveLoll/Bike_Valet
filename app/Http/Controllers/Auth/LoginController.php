@@ -41,7 +41,7 @@ class LoginController extends Controller
 
    /* $userStatus = 'preRegistered';*/
 
-    protected $redirectTo = 'home';
+    protected $redirectTo = '/volunteer-welcome';
 
 
    /* $userStatus = 'Registered';

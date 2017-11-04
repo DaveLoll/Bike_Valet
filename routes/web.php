@@ -22,16 +22,16 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('Auth/login');
 });
 
-Route::get('/volunteerWelcome', function () {
-    return view('volunteerWelcome');
+Route::get('/volunteer-welcome', function () {
+    return view('volunteer-welcome');
 });
 
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
 

@@ -13,12 +13,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
    Log:
                  20171015:     Added new form fields to 'fillable' method./AC
                  20171017      changed variables to lowerCamelCase//AC
+                 20171031      Chabged variable names back to underscore//AC
 */
 
 
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'User';
+    protected $primaryKey = 'User_ID';
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'userFirstName', 'userLastName', 'userPhoneNumber', 'email', 'userRole', 'password',
+        'User_First_Name', 'User_Last_Name', 'email', 'User_Phone_Number', 'password', 'User_Role', 'User_Status',
     ];
 
     /**
