@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" id=@yield('id')>
     <div data-role="header">
         @section('header')
         @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Biker;
 use App\ParkedBike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ParkedBikeController extends Controller
 {
@@ -74,23 +75,31 @@ class ParkedBikeController extends Controller
 
     }
 
-    public function updateStatus(Request $request)
+    public function updateStatus($BikerID)
     {
+        $ParkedBikedID = DB::table('ParkedBike')->where('Biker_ID', '=', $BikerID);
+
         $ParkedBike = new ParkedBike();
-        $ParkedBike->Parked_Bike_ID = $request->Parked_Bike_ID;
+        $ParkedBike->Parked_Bike_ID = $ParkedBikedID->Parked_Bike_ID;
         $ParkedBike->Status = 'Checked Out';
         $ParkedBike -> save();
 
         return redirect('/splash');
     }
 
-    public function  getCheckOutInformation($ParkedBikeIDString)
+    public function  getCheckedInBikers()
     {
-        $ParkedBikeInformation = ParkedBike::where('Parked_Biked_ID', $ParkedBikeIDString) -> first();
-        $BikerInformation = Biker::where('Biker_ID', $ParkedBikeInformation->Biker_ID);
-         return redirect('/CheckOut');
+        $checkedInBikers = DB::table('Biker')
+                            ->join('ParkedBike', 'Biker.Biker_ID', '=', 'ParkedBike.Biker_ID')
+                            ->select('Biker.*')
+                            ->where('ParkedBike.Status', '=', 'Checked_In');
 
+        $checkedInBikes = DB::table('ParkedBike')->where('ParkedBike.Status', '=', 'Checked_In');
+        $data = array('Biker' => $checkedInBikers,
+                      'ParkedBike' => $checkedInBikes);
+        return redirect('ListBikes', compact('checkedInBikers'));
     }
+
 
     /**
      * Remove the specified resource from storage.

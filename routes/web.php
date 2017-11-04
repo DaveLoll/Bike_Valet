@@ -18,12 +18,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::Resource('/home', 'HomeController@index')->name('home');
+Route::Resource('/home', 'HomeController@index');
 
 Route::Resource('ParkedBike', 'ParkedBikeController');
+Route::Get('/ListBikes', 'ParkedBikeController@getCheckedInBikers');
+Route::Post('/splash', 'ParkedBikeController@UpdateStatus');
 Route::Resource('Event','EventController');
 Route::Resource('Biker', 'BikerController');
 Route::Resource('User', 'UserController');
 Route::Resource('Organization', 'Organization');
 Route::Resource('ValetEvent', 'ValetEventController');
-Route::Get('/GetCheckoutInformation', 'ParkedBikeController@GetCheckoutInformation' );

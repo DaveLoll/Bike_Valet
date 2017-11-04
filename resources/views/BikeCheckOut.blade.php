@@ -11,8 +11,6 @@
 ?>
 
 @extends('layouts.master')
-@section('title','Check Out')
-    @stop
 
 @section('header')
     <a href="" data-icon="arrow-l"></a>

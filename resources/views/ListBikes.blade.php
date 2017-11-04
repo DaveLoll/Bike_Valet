@@ -10,24 +10,44 @@
 ?>
 
 @extends('layouts.master')
-@section('title','Check Out')
+@section('title','List Bikes')
 @stop
 
+@section('id', 'ListBike')
+    @stop
 @section('header')
     <a href="#" data-icon="arrow-l"></a>
-    <h1>Bikes Checked In</h1>
+    <h1>Bikers</h1>
 @stop
 
 @section('main')
-    {{$Biker= App\Biker::with('Biker_First_Name', 'Biker_Last_Name')->get(); }}
     @if(count($Biker) > 0)
-        <form action="/GetCheckoutInformation" method="Post" data-ajax="false">
+        <form action="" method="Get" data-ajax="false">
+            {{csrf_field()}}
           @foreach($Biker as $Bike)
-                <input type="radio" name="BikerList" value="unchecked" onchange="this.form.submit();">{{echo $Biker->Bike->Biker_First_Name + $Biker->Bike->Biker_Last_Name;}}<br>
-          @endfor
+                <input type="radio" name="BikerList" value="unchecked" onchange="">{{$Biker->Bike->Biker_First_Name}} + " " + {{$Biker->Bike->Biker_Last_Name;}}<br>
+          <div data-role="panel" data-display="overlay" id="checkout">
+             <div data-role="Header">
+                 <a data-rel="back" data-icon="arrow-l"></a>
+                 <h1>Biker</h1>
+             </div>
+              <div data-role="main">
+                  {{$Biker->Bike->Biker_First_Name;}}
+                  <br>
+                  {{$Biker->Bike->Biker_Last_Name;}}
+                  <br>
+                  {{$Biker->Bike->Biker_Phone_Number;}}
+                  <br>
+                  <input type="button" name="submit" id="CheckOut" value="{{$Biker->Bike->Biker_ID;}}">
+              </div>
+
+          </div>
+                @endfor
         </form>
     @endif
 @stop
 
 @section('footer')
 @stop
+
+
