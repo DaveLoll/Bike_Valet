@@ -88,6 +88,7 @@ class ValetEventController extends Controller
       $valetEvents = Valet_Event::all();
       return view('/', compact('valetEvents'));
     }
+    
     public function selectEvent(Request $request, Event $events)
     {
       $selectedEvent = "";
