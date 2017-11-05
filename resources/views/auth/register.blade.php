@@ -44,11 +44,12 @@
     </head>
     <div data-role="page" id="new_volunteer_registration">
         <div data-role="header">
-            <a data-icon="arrow-l" data-rel="back"></a>
-            <h2>Create New Volunteer</h2>
+            
+            
         </div><!-- /header -->
 
         <div role="main" class="ui-content">
+        <h2>Create New Volunteer</h2>
             @if(count($errors)>0)
                 @foreach ($errors->all() as $error)
                     <div>{{ $error }}</div>
