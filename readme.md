@@ -36,7 +36,7 @@ The class decided on the following coding conventions, which should be followed 
 
   - Class names **and** Controller Names are UpperCamelCase, example: UserControllerClass
   - Method names are lowerCamelCase, example: userControllerMethod()
-  - Variable names are underscores, example: $user_controller_variable
+  - Variable names are lowerCamelCase, example: $userControllerVariable
   - Page names are hypenated, example: user-controller-view-page.blade.php
   - Commit statements will have a small description of what functionality you were working on.
   - Pages will have an added comment at the top of the file when editing those pages as per your suggestion in class Friday.

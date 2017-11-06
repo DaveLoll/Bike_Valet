@@ -9,7 +9,6 @@
 */
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
 class UserTableSeeder extends Seeder
 {
     /**
@@ -20,10 +19,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-
         //Used to change the amount of users you want to seed
         $limit = 30;
-
         //This insert is to guarantee that you have an admin user in the database
         DB::table('User')->insert([
             'User_First_Name' => 'Admin',
@@ -34,7 +31,6 @@ class UserTableSeeder extends Seeder
             'User_Role' => $faker->randomElement(['Admin']),
             'User_Status' => $faker->randomElement(['Registered']),
         ]);
-
         for ($i = 0; $i < $limit; $i++) {
             DB::table('User')->insert([
                 'User_First_Name' => $faker->firstName,
