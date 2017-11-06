@@ -33,5 +33,11 @@ Route::get('/volunteer-welcome', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::get('/checkin', function () {
+    return view('check-in');
+});
+Route::resource('Biker', 'BikerController');
+Route::post('/bikerEvent', 'BikerController@createBikerAndCheckin');
+Route::resource('Event', 'EventController');
+Route::resource('ParkedBike', 'ParkedBikeController');
+Route::post('/bikerInfo', 'BikerController@show');

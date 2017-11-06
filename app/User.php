@@ -22,7 +22,6 @@ class User extends Authenticatable
     use Notifiable;
     protected $table = 'User';
     protected $primaryKey = 'User_ID';
-
     /**
      * The attributes that are mass assignable.
      *
