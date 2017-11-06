@@ -5,6 +5,18 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/*
+   Filename:     index.php
+   Creator:      Laravel
+   Create Date:  20171010
+   Purpose:      The application's initial page.
+   Log:
+                 20171015:     Added new form fields to 'fillable' method./AC
+                 20171017      changed variables to lowerCamelCase//AC
+                 20171031      Chabged variable names back to underscore//AC
+*/
+
+
 class User extends Authenticatable
 {
     use Notifiable;
