@@ -24,6 +24,8 @@ Route::get('/splash', function () {
 });
 
 Route::get('/selectEvent', 'EventController@selectEventIndex');
+//Route::resource('selectEvent', 'ValetEventController');
+//Route::resource('selectEvent', 'EventController');
 Route::post('/selectEvent', 'ValetEventController@selectEvent');
 
 Auth::routes();
