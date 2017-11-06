@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Biker;
 use App\ParkedBike;
-use App\Biker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\SendTicket;
@@ -91,29 +90,32 @@ class ParkedBikeController extends Controller
 
     }
 
-    public function updateStatus($BikerID)
+    public function updateStatus(request $request)
     {
-        $ParkedBikedID = DB::table('ParkedBike')->where('Biker_ID', '=', $BikerID);
+        $Biker = Biker::find($request->BikerID);
+        $ParkedBike = $Biker->Parked_Bike;
+        //$ParkedBike = ParkedBike::find(8);
 
-        $ParkedBike = new ParkedBike();
-        $ParkedBike->Parked_Bike_ID = $ParkedBikedID->Parked_Bike_ID;
+        //$ParkedBike = new ParkedBike();
+        //$ParkedBike->Parked_Bike_ID = $ParkedBikedID->Parked_Bike_ID;
+
         $ParkedBike->Status = 'Checked Out';
         $ParkedBike -> save();
 
-        return redirect('/splash');
+        return redirect('/ListBikes');
     }
 
     public function  getCheckedInBikers()
     {
         $checkedInBikers = DB::table('Biker')
-                            ->join('ParkedBike', 'Biker.Biker_ID', '=', 'ParkedBike.Biker_ID')
+                            ->join('Parked_Bike', 'Biker.Biker_ID', '=', 'Parked_Bike.Biker_ID')
                             ->select('Biker.*')
-                            ->where('ParkedBike.Status', '=', 'Checked_In');
+                            ->where('Parked_Bike.Status', '=', 'Checked In')->get();
 
-        $checkedInBikes = DB::table('ParkedBike')->where('ParkedBike.Status', '=', 'Checked_In');
+        $checkedInBikes = DB::table('Parked_Bike')->where('Parked_Bike.Status', '=', 'Checked_In')->get();
         $data = array('Biker' => $checkedInBikers,
-                      'ParkedBike' => $checkedInBikes);
-        return redirect('ListBikes', compact('checkedInBikers'));
+                      'Parked_Bike' => $checkedInBikes);
+        return view('ListBikes', compact('checkedInBikers'));
     }
 
 

@@ -20,18 +20,20 @@
 <div data-role="page" id=@yield('id')>
     <div data-role="header">
         @section('header')
-        @endsection
+        @show
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
         @section('main')
-        @endsection
+        @show
     </div><!-- /content -->
 
     <div data-role="footer">
         @section('footer')
-        @endsection
+        @show
     </div><!-- /footer -->
 </div>
+    @section('extra')
+    @show
 </body>
 </html>

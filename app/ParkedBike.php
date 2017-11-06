@@ -19,10 +19,10 @@ class ParkedBike extends Model
 
     public function Biker()
     {
-        return $this->hasOne('App/ParkedBike');
+        return $this->hasMany('App\Biker');
     }
     public function event()
     {
-        return $this->belongsTo('App\Event', 'Event_ID');
+        return $this->belongsToMany('App\Event', 'Event_ID');
     }
 }
