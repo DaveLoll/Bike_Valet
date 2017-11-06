@@ -28,6 +28,14 @@ Route::get('/', function () {
     return view('Auth/login');
 });
 
+Route::Resource('ParkedBike', 'ParkedBikeController');
+Route::Get('/ListBikes', 'ParkedBikeController@getCheckedInBikers');
+Route::Post('/splash', 'ParkedBikeController@UpdateStatus');
+Route::Resource('Event','EventController');
+Route::Resource('Biker', 'BikerController');
+Route::Resource('User', 'UserController');
+Route::Resource('Organization', 'Organization');
+Route::Resource('ValetEvent', 'ValetEventController');
 Route::get('/volunteer-welcome', function () {
     return view('volunteer-welcome');
 });
@@ -36,8 +44,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/checkin', function () {
     return view('check-in');
 });
-Route::resource('Biker', 'BikerController');
 Route::post('/bikerEvent', 'BikerController@createBikerAndCheckin');
-Route::resource('Event', 'EventController');
-Route::resource('ParkedBike', 'ParkedBikeController');
 Route::post('/bikerInfo', 'BikerController@show');

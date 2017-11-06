@@ -17,6 +17,10 @@ class ParkedBike extends Model
         'Event_ID', 'Ticket', 'Tag_Number', 'Comment', 'Biker_ID', 'Status',
     ];
 
+    public function Biker()
+    {
+        return $this->hasOne('App/ParkedBike');
+    }
     public function event()
     {
         return $this->belongsTo('App\Event', 'Event_ID');

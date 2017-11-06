@@ -22,7 +22,7 @@ class CreateBikerTable extends Migration
     {
         Schema::create('Biker', function (Blueprint $table) {
             $table->increments('Biker_ID');
-            $table->string('Biker_Email')->nullable();
+            $table->string('Biker_Email', '225')->nullable();
             $table->string('Biker_Zip')->nullable();
             $table->string('Biker_First_Name');
             $table->string('Biker_Last_Name');
