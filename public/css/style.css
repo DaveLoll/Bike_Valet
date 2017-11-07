@@ -76,10 +76,11 @@ p  {
     font-size: .75em;
 }
 
-p a   {
+p a.ui-link   {
     text-decoration-line: none;
     color: black;
-    position: relative;
+    display: block;
+    text-align: center;
 
 }
 
