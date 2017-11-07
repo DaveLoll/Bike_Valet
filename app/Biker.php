@@ -22,4 +22,9 @@ class Biker extends Model
     {
         return $this->Biker_Phone_Number;
     }
+
+    public function Parked_Bike()
+    {
+        return $this->belongsTo('App\ParkedBike', 'Biker_ID', 'Biker_ID');
+    }
 }

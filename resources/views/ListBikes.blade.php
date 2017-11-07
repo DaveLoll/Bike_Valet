@@ -11,52 +11,98 @@
 
 @extends('layouts.master')
 @section('title','List Bikes')
-@stop
 
 
-@section('id', 'ListBike')
-    @stop
+{{--@section('id', 'ListBike')--}}
+    {{--@stop--}}
 @section('header')
     <a href="#" data-icon="arrow-l"></a>
     <h1>Bikers</h1>
-@stop
+@endsection
+
+{{--<h1>potato</h1>--}}
+{{--{{count($checkedInBikers)}}--}}
 
 @section('main')
     <script>
         $(document).ready(function() {
-            $("input[name$='BikerList']").click(function() {
+//            $("input[name$='BikerList']").click(function() {
+//                var Biker = $(this).val();
+//                $("#Checkout").show();
+//            });
+            console.log("javascript");
+            $(".BikerList").click(function() {
+                console.log("click");
                 var Biker = $(this).val();
-                $("#Checkout").show();
+                console.log(Biker);
+                $("#checkout").show();
             });
         });
     </script>
-    @if(count($Biker) > 0)
-        <form action="" method="Get" data-ajax="false">
+    @if(count($checkedInBikers) > 0)
+        <form action="/splash" method="Post" data-ajax="false">
             {{csrf_field()}}
-          @foreach($Biker as $Bike)
-                <input type="radio" name="BikerList" value="unchecked"> {{$Biker->Bike->Biker_First_Name}} + " " + {{$Biker->Bike->Biker_Last_Name;}}<br>
-          <div data-role="panel" data-display="overlay" id="checkout">
-             <div data-role="Header">
-                 <a data-rel="back" data-icon="arrow-l"></a>
-                 <h1>Biker</h1>
-             </div>
-              <div data-role="main">
-                  {{$Biker->Bike->Biker_First_Name;}}
+          @foreach($checkedInBikers as $Bike)
+                <input class="BikerList" type="radio" name="BikerList" value="unchecked"> {{$Bike->Biker_First_Name ." ". $Bike->Biker_Last_Name}}<br>
+          {{--<div data-role="panel" data-display="overlay" id="checkout">--}}
+             {{--<div data-role="Header">--}}
+                 {{--<a data-rel="back" data-icon="arrow-l"></a>--}}
+                 {{--<h1>Biker</h1>--}}
+             {{--</div>--}}
+              {{--<div data-role="main" id="test">--}}
+                  {{$Bike->Biker_First_Name}}
                   <br>
-                  {{$Biker->Bike->Biker_Last_Name;}}
+                  {{$Bike->Biker_Last_Name}}
                   <br>
-                  {{$Biker->Bike->Biker_Phone_Number;}}
+                  {{$Bike->Biker_Phone_Number}}
                   <br>
-                  <input type="button" name="submit" id="CheckOut" value="{{$Biker->Bike->Biker_ID;}}">
-              </div>
+                  <input type="submit" name="BikerID" id="CheckOut" value="{{$Bike->Biker_ID}}">
+              {{--</div>--}}
 
-          </div>
-                @endfor
+          {{--</div>--}}
+            {{--@section('extra')--}}
+                {{--<div data-role="panel" data-display="overlay" id="checkout">--}}
+                    {{--<div data-role="Header">--}}
+                        {{--<a data-rel="back" data-icon="arrow-l"></a>--}}
+                        {{--<h1>Biker</h1>--}}
+                    {{--</div>--}}
+                    {{--<div data-role="main" id="test">--}}
+                        {{--{{$Bike->Biker_First_Name}}--}}
+                        {{--<br>--}}
+                        {{--{{$Bike->Biker_Last_Name}}--}}
+                        {{--<br>--}}
+                        {{--{{$Bike->Biker_Phone_Number}}--}}
+                        {{--<br>--}}
+                        {{--<input type="button" name="submit" id="CheckOut" value="{{$Bike->Biker_ID}}">--}}
+                    {{--</div>--}}
+
+                {{--</div>--}}
+            {{--@stop--}}
+            @endforeach
         </form>
-    @endif
-@stop
+     @endif
+    @stop
 
 @section('footer')
 @stop
+
+{{--@section('extra')--}}
+    {{--<div data-role="panel" data-display="overlay" id="checkout">--}}
+        {{--<div data-role="Header">--}}
+            {{--<a data-rel="back" data-icon="arrow-l"></a>--}}
+            {{--<h1>Biker</h1>--}}
+        {{--</div>--}}
+        {{--<div data-role="main" id="test">--}}
+            {{--{{$Bike->Biker_First_Name}}--}}
+            {{--<br>--}}
+            {{--{{$Bike->Biker_Last_Name}}--}}
+            {{--<br>--}}
+            {{--{{$Bike->Biker_Phone_Number}}--}}
+            {{--<br>--}}
+            {{--<input type="button" name="submit" id="CheckOut" value="{{$Bike->Biker_ID}}">--}}
+        {{--</div>--}}
+
+    {{--</div>--}}
+{{--@stop--}}
 
 
