@@ -47,7 +47,7 @@ li {
     margin-top: 2%;
 }
 
-input#uInput {
+/*input#uInput {
     border-top: transparent;
     border-right: transparent;
     border-left: transparent;
@@ -68,7 +68,7 @@ input#uInput {
     width: 94%;
     padding-bottom: 5%;
 
-}
+}*/
 
 p  {
     text-align: center;
@@ -87,8 +87,9 @@ p a   {
     background-color: darkred;
     font-size: 1.2em !important;
     color: white;
+    text-align: center;
     border-radius: 6em !important;
-    position: fixed !important;
+    /*position: fixed !important;*/
     padding: .79em .79em !important;
     margin: 0 auto;
     left: 8%;
