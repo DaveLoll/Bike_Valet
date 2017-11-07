@@ -28,7 +28,23 @@ Route::get('/', function () {
     return view('Auth/login');
 });
 
-Route::Resource('ParkedBike', 'ParkedBikeController');
+Route::get('/example', function () {
+    return view('example');
+});
+
+Route::get('/splash', function () {
+    return view('splash');
+});
+
+Route::get('/selectEvent', 'EventController@selectEventIndex');
+//Route::resource('selectEvent', 'ValetEventController');
+//Route::resource('selectEvent', 'EventController');
+Route::post('/selectEvent', 'ValetEventController@selectEvent');
+
+Auth::routes();
+
+Route::post('/bikerEvent', 'BikerController@createBikerAndCheckin');
+Route::resource('ParkedBike', 'ParkedBikeController');
 Route::Get('/ListBikes', 'ParkedBikeController@getCheckedInBikers');
 Route::Post('/splash', 'ParkedBikeController@UpdateStatus');
 Route::Resource('Event','EventController');

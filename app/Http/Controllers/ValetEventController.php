@@ -82,4 +82,17 @@ class ValetEventController extends Controller
     {
         //
     }
+
+    public function selectEventIndex()
+    {
+      $valetEvents = Valet_Event::all();
+      return view('/', compact('valetEvents'));
+    }
+    
+    public function selectEvent(Request $request, Event $events)
+    {
+      $selectedEvent = "";
+      Trip::findOrFail($request->Event_ID)->update((['User_ID'=>$request->User_ID, 'Event_ID'=>$request->Event_ID]));
+      return redirect('/splash');
+    }
 }
