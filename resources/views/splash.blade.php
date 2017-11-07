@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    {{--{{session('EventID')}}--}}
     <a id="nav-toggle" href="#">&#9776;</a>
     <h2 style="text-align: center;">
         <?php

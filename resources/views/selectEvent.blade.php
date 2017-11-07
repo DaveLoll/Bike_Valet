@@ -43,14 +43,15 @@
         <div data-role="content">
 
             <ul data-role="listview">
-
                 <li data-role="list-divider">
-                    <form method="post" action="">
+                    <form method="POST" action="/selectEvent" data-ajax="false">
+                        {{csrf_field()}}
+                        <input type="hidden" name="User_ID" value={{Auth::user()->User_ID}}>
                     @foreach($events as $event)
                     <?php
                     if ($event->Event_Status == 'Started') {
                       echo '<li>';
-                      echo "<input type=\"radio\" name=\"Event_Name\" value=\"\">$event->Event_Date $event->Event_Start_Time - $event->Event_Stop_Time $event->Event_Name</input>";
+                      echo "<input type=radio name=Event_ID value=$event->Event_ID>$event->Event_Date $event->Event_Start_Time - $event->Event_Stop_Time $event->Event_Name</input>";
                       echo '</li>';
                     }
                     ?>

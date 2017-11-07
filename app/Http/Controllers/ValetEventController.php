@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ValetEvent;
+use App\Event;
 use Illuminate\Http\Request;
 
 class ValetEventController extends Controller
@@ -89,10 +90,17 @@ class ValetEventController extends Controller
       return view('/', compact('valetEvents'));
     }
     
-    public function selectEvent(Request $request, Event $events)
+    public function selectEvent(Request $request)
     {
-      $selectedEvent = "";
-      Trip::findOrFail($request->Event_ID)->update((['User_ID'=>$request->User_ID, 'Event_ID'=>$request->Event_ID]));
+      $selectedEvent = new ValetEvent();
+      $selectedEvent->User_ID = $request->User_ID;
+      $selectedEvent->Event_ID = $request->Event_ID;
+      $selectedEvent->save();
+
+      session(['EventID' => $selectedEvent->Event_ID]);
+
+//      $event = Event::find($request->Event_ID);
+//      $event->Event_Status = "Started";
       return redirect('/splash');
     }
 }
