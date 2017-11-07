@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'nexmo' => [
+        'key' => '41e5ef7f',
+        'secret' => 'c820c2d920c5916a',
+        'sms_from' => '12012795533',
+    ],
+
 ];

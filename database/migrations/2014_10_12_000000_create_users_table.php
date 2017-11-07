@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->increments('User_ID');
             $table->string('User_First_Name');
             $table->string('User_Last_Name');
-            $table->string('email')->unique();
-            $table->string('User_Phone_Number')->unique();
+            $table->string('email', '225')->unique();
+            $table->string('User_Phone_Number', '10')->unique();
             $table->string('password');
             $table->enum('User_Role', ['Valet', 'Lead Valet', 'Admin']);
             $table->enum('User_Status', ['Pre Registered', 'Registered', 'Terminated']);

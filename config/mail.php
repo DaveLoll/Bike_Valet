@@ -1,5 +1,17 @@
 <?php
 
+/*
+   Filename:     RegisterController.php
+   Creator:      Laravel
+   Create Date:  20171010
+   Purpose:      Controls how mail is sent and what appears in the "from" e-mail address and "from" name.
+   Log:
+                 20171018:    Added dummy e-mail and from content that will show in e-mail message//AC
+
+*/
+
+
+
 return [
 
     /*
@@ -29,7 +41,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +68,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'openBikeValet@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Open Bike Valet'),
     ],
 
     /*

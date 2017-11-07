@@ -1,9 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+/*
+   Filename:     RegisterController.php
+   Creator:      Laravel
+   Create Date:  20171010
+   Purpose:      Controls Laravel's Registration Page.
+   Log:
+                 20171014:    Added new form elements to validator and user//AC
+                 20171017:    Changed variables to lowerCamelCase//AC
+*/
+
+
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Mail\ChangePassword;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +39,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -39,6 +51,8 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -48,9 +62,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userPhoneNumber' => 'required|string',
             'email' => 'required|string|email|max:255|unique:User',
+            'userRole' => 'required|in:Lead Valet,Valet,Admin',
             'password' => 'required|string|min:6|confirmed',
+           /* 'userStatus' => 'required|in:PreRegistered,Registered,Terminated',*/
         ]);
     }
 
@@ -63,9 +81,21 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'User_First_Name' => $data['userFirstName'],
+            'User_Last_Name' => $data['userLastName'],
+            'User_Phone_Number' => $data['userPhoneNumber'],
             'email' => $data['email'],
+            'User_Role' => $data['userRole'],
             'password' => bcrypt($data['password']),
+            'User_Status' => 'Pre Registered',
         ]);
+
+
+
+
+        auth()->login($user);
+
+     /*   \Mail::to($user)->send(new ChangePassword($user));*/
+
     }
 }

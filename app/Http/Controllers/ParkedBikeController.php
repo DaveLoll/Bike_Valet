@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Biker;
 use App\ParkedBike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Notifications\SendTicket;
 
 class ParkedBikeController extends Controller
 {
@@ -14,8 +17,9 @@ class ParkedBikeController extends Controller
      */
     public function index()
     {
-        //
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +39,21 @@ class ParkedBikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $biker = Biker::where('Biker_Phone_Number',$request->PhoneNumber) -> first();
+//        echo $request->PhoneNumber;
+//        echo "<br/>";
+//        echo $biker->Biker_ID;
+        $parkedBike = new ParkedBike();
+        $parkedBike->Event_ID = 2;
+        $parkedBike->Ticket = rand(1,100);
+        $parkedBike->Tag_Number = $request->tag;
+        $parkedBike->comment = null;
+        $parkedBike->Biker_ID = $biker->Biker_ID;
+        $parkedBike->Status = 'Checked In';
+        $parkedBike->save();
+
+        $biker->notify(new SendTicket('Your ticket is:' . $parkedBike->Ticket));
+        return redirect('/checkin');
     }
 
     /**
@@ -67,10 +85,39 @@ class ParkedBikeController extends Controller
      * @param  \App\ParkedBike  $parkedBike
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ParkedBike $parkedBike)
+    public function update(Request $request)
     {
-        //
+
     }
+
+    public function updateStatus(request $request)
+    {
+        $Biker = Biker::find($request->BikerID);
+        $ParkedBike = $Biker->Parked_Bike;
+        //$ParkedBike = ParkedBike::find(8);
+
+        //$ParkedBike = new ParkedBike();
+        //$ParkedBike->Parked_Bike_ID = $ParkedBikedID->Parked_Bike_ID;
+
+        $ParkedBike->Status = 'Checked Out';
+        $ParkedBike -> save();
+
+        return redirect('/ListBikes');
+    }
+
+    public function  getCheckedInBikers()
+    {
+        $checkedInBikers = DB::table('Biker')
+                            ->join('Parked_Bike', 'Biker.Biker_ID', '=', 'Parked_Bike.Biker_ID')
+                            ->select('Biker.*')
+                            ->where('Parked_Bike.Status', '=', 'Checked In')->get();
+
+        $checkedInBikes = DB::table('Parked_Bike')->where('Parked_Bike.Status', '=', 'Checked_In')->get();
+        $data = array('Biker' => $checkedInBikers,
+                      'Parked_Bike' => $checkedInBikes);
+        return view('ListBikes', compact('checkedInBikers'));
+    }
+
 
     /**
      * Remove the specified resource from storage.
