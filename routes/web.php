@@ -50,7 +50,7 @@ Route::Post('/splash', 'ParkedBikeController@UpdateStatus');
 Route::Resource('Event','EventController');
 Route::Resource('Biker', 'BikerController');
 Route::Resource('User', 'UserController');
-Route::Resource('Organization', 'Organization');
+Route::Resource('Organization', 'OrganizationController');
 Route::Resource('ValetEvent', 'ValetEventController');
 Route::get('/volunteer-welcome', function () {
     return view('volunteer-welcome');
