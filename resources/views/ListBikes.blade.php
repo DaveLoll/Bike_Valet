@@ -84,6 +84,7 @@
     @stop
 
 @section('footer')
+    <a href="/splash">Back to splash page</a>
 @stop
 
 {{--@section('extra')--}}

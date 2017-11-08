@@ -27,47 +27,42 @@
     {{--{{session('EventID')}}--}}
     <a id="nav-toggle" href="#">&#9776;</a>
     <h2 style="text-align: center;">
-        <?php
-        $ufname = DB::table('User')->where('User_ID', '2')->value('User_First_Name');
-        ?>
-        {{$ufname}} is the valet for
+        {{Auth::user()->User_First_Name}}
+        is the valet for
         <br>
-        <?php
-        $ename = DB::table('Event')->where('Event_Status', 'Started')->value('Event_Name');
-        ?>
-        {{$ename}}
+        {{session("EventName")}}
     </h2>
 
-    <h3 style="float: left; margin-left: 320px;">
-        The image <br>
-        of the <br>
-        bikes <br>
-        checked in<br>
-        goes here <br>
-    </h3>
+    {{--<h3 style="float: none; margin-left: 0px;">--}}
+        {{--The image <br>--}}
+        {{--of the <br>--}}
+        {{--bikes <br>--}}
+        {{--checked in<br>--}}
+        {{--goes here <br>--}}
+    {{--</h3>--}}
 
-    <h3 style="float: right; margin-right: 320px;">
-    <?php
-        $estime = DB::table('Event')->where('Event_Status', 'Started')->value('Event_Start_Time');
-    ?>
-    {{$estime}} -
-    <?php
-        $eetime = DB::table('Event')->where('Event_Status', 'Started')->value('Event_Stop_Time');
-    ?>
-    {{$eetime}}
-    <br>
-    <br>
-    Remaining Time: <br>
-    I'm not<br>
-    doing this<br>
-    right now<br>
-    </h3>
+    {{--<h3 style="float: none; margin-right: 0px;">--}}
+    {{--<?php--}}
+        {{--$estime = DB::table('Event')->where('Event_Status', 'Started')->value('Event_Start_Time');--}}
+    {{--?>--}}
+    {{--{{$estime}} ---}}
+    {{--<?php--}}
+        {{--$eetime = DB::table('Event')->where('Event_Status', 'Started')->value('Event_Stop_Time');--}}
+    {{--?>--}}
+    {{--{{$eetime}}--}}
+    {{--<br>--}}
+    {{--<br>--}}
+    {{--Remaining Time: <br>--}}
+    {{--I'm not<br>--}}
+    {{--doing this<br>--}}
+    {{--right now<br>--}}
+    {{--</h3>--}}
 
     <div>
-        <a href="###"><button type="button">Check In</button></a>
+        <a href="checkin" data-ajax="false"><button type="button">Check In</button></a>
     </div>
     <div>
-        <a href="###"><button type="button">Check Out</button></a>
+        <a href="ListBikes" data-ajax="false"><button type="button">Check Out</button></a>
     </div>
 </body>
 </html>

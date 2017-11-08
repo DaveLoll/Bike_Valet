@@ -97,7 +97,11 @@ class ValetEventController extends Controller
       $selectedEvent->Event_ID = $request->Event_ID;
       $selectedEvent->save();
 
+      $event = Event::find($request->Event_ID);
+
+
       session(['EventID' => $selectedEvent->Event_ID]);
+      session(['EventName' => $event->Event_Name]);
 
 //      $event = Event::find($request->Event_ID);
 //      $event->Event_Status = "Started";

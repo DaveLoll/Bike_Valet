@@ -56,6 +56,7 @@
                     }
                     ?>
                     @endforeach
+
                     <input type="submit" name="submit" value="Select Event"><br>
                     </form>
                  </li>

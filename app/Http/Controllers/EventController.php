@@ -97,4 +97,8 @@ class EventController extends Controller
     return view('selectEvent', compact('events'));
   }
 
+  public function getEventByID()
+  {
+
+  }
 }

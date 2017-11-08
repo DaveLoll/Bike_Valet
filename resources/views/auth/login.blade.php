@@ -68,9 +68,7 @@ Log:
             </div>
             <p><a href="{{url('/register')}}">NEED TO REGISTER?</a></p>
 
-            <div class="ui-input-btn ui-corner-all" input type="submit" name="submit" id="submit" value="Login">
-            LOGIN
-            </div>
+            <div class="ui-input-btn ui-corner-all"> <input type="submit" name="submit" id="submit" value="Login"></div>
         </form>
 
     </div><!-- /content -->

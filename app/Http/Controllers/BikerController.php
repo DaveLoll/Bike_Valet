@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Biker;
 use App\ParkedBike;
-use App\Event;
 use Illuminate\Http\Request;
 use App\Notifications\SendTicket;
 use DB;
@@ -113,7 +112,7 @@ class BikerController extends Controller
         }
 
         $parkedBike = new ParkedBike();
-        $parkedBike->Event_ID = 2;
+        $parkedBike->Event_ID = session('EventID');
         $parkedBike->Ticket = rand(1,100);
         $parkedBike->Tag_Number = $request->tag;
         $parkedBike->comment = null;
@@ -122,6 +121,6 @@ class BikerController extends Controller
         $parkedBike->save();
 
         $biker->notify(new SendTicket('Your ticket is:' . $parkedBike->Ticket));
-        return redirect('/checkin');
+        return redirect('/splash');
     }
 }
